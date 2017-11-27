@@ -1,10 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Doctor {
-
-	String name = "";
-	String username = "";
+public class Doctor extends Employee{
 	
 	Doctor(String name, String username)
 	{
