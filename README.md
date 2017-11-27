@@ -1,5 +1,5 @@
 # Hospital-Management-System
-(currently in the planning phase)
+(currently in the implementation phase)
 
 This project is a part of the course work for <a href='https://catalog.buffalo.edu/courses/index.php?abbr=CSE&num=522'>CSE 522 : Object Oriented Analysis, Design and Implementation</a>.
 
