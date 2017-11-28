@@ -15,9 +15,24 @@ public class Patient {
 	
 	public void ViewRecords()
 	{
-		while(patientRecord.iterator().hasNext())
+		String records = "";
+		for(int i = 0; i< patientRecord.size(); i++)
 		{
-			System.out.println(patientRecord.iterator().next().toString());
+			records = records + (patientRecord.iterator().next().toString());
 		}
+		
+		if(records.isEmpty())
+		{
+			System.out.println("Nothing to show");
+		}
+		else
+		{
+			System.out.println(records);
+		}
+	}
+	
+	public void ViewAccount()
+	{
+		System.out.println("Your outstanding amount to be paid is " + accountbalance);
 	}
 }

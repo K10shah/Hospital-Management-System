@@ -16,9 +16,9 @@ public class Login {
 	
 	public Boolean loginVerify(String username, String pwd)
 	{
-		if(loginData.containsKey("admin"))
+		if(loginData.containsKey(username))
 		{
-			String check = loginData.get("admin").toString();
+			String check = loginData.get(username).toString();
 			if(check.equals(pwd))
 			{
 				return true;
