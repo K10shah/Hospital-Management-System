@@ -10,9 +10,11 @@ class DoctorTest {
 	void TreatPatienttest() {
 		Patient p = new Patient("pat", "pat");
 		Doctor d = new Doctor("doc", "doc");
-		p.patientRecord.add(new PatientRecord(LocalTime.now(), "Very sick", "crocin", d.name));
+		p.AddRecord(new PatientRecord(LocalTime.now(), "Very sick", "crocin", d.getName()));
 		d.TreatPatient(p);
-		assert(2 == p.patientRecord.size());
+		assert(2 == p.getPatientRecord().size());
+		PatientRecord pr = p.getPatientRecord().remove(1);
+		assert(pr.getDiagnosis().contains("Very sick"));
 		
 	}
 

@@ -9,7 +9,7 @@ class MainSystemTest {
 	{
 		MainSystem ma = new MainSystem();
 		ma.ShowAddPatientMenu();
-		assert(2 == ma.loginInfo.loginData.size());
+		assert(2 == ma.loginInfo.getLoginData().size());
 		assert(ma.patients.size() == 1);
 	}
 	
@@ -17,7 +17,7 @@ class MainSystemTest {
 	{
 		MainSystem ma1 = new MainSystem();
 		ma1.ShowAddRecepMenu();
-		assert(2 == ma1.loginInfo.loginData.size());
+		assert(2 == ma1.loginInfo.getLoginData().size());
 		assert(ma1.receps.size() == 1);
 	}
 

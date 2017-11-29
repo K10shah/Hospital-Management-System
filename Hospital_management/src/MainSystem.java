@@ -26,13 +26,15 @@ public class MainSystem {
 
 
 
+		users.put("admin", "admin");
+		
 		while(true)
 		{
 			System.out.println("------------------------\nEnter username to login");
 			username = scanf.nextLine();
 			System.out.println("Enter the password");
 			pwd = scanf.nextLine();
-			users.put("admin", "admin");
+			
 			//Verifying if the credentials are proper or not
 			if(loginInfo.loginVerify(username, pwd))
 			{
@@ -57,7 +59,10 @@ public class MainSystem {
 		}
 	}
 
-	//Options for the receptionist
+	//Options for the receptionist	
+	//@Requires("receps!= null" && "loginInfo!=null")
+	//@Ensures("new(receps.size()) = old(receps.size()) + 1" && "new(loginInfo.logindata.size()) == old(loginInfo.loginData.size()) +1" 
+	//			&& "receps.containsKey(username)" && "users.containsKey(username)")
 	public static void ShowReceptionistOptions()
 	{
 		Scanner scanf = new Scanner(System.in);
@@ -95,7 +100,10 @@ public class MainSystem {
 		}
 	}
 
+	
 	//Options for the doctor
+	//@Requires("doctors!= null" && "loginInfo!=null")
+	//@Ensures("doctors.size.new = doctors.size.old + 1" && "loginInfo.logindata.size.new == loginInfo.loginData.size.old +1")
 	public static void ShowDoctorOptions(String username)
 	{
 		Scanner scanf = new Scanner(System.in);
@@ -104,7 +112,7 @@ public class MainSystem {
 
 		while(true)
 		{
-			System.out.println("Hello Dr. " + d1.name +  " Enter the action to perform " 
+			System.out.println("Hello Dr. " + d1.getName() +  " Enter the action to perform " 
 					+ "\n1. View patient record history"
 					+ "\n2. Update patient record"
 					+ "\n3. Logout");
@@ -183,7 +191,7 @@ public class MainSystem {
 
 		while(true)
 		{
-			System.out.println("Hello" + p1.name + " Enter the action to perform " 
+			System.out.println("Hello " + p1.getName() + " Enter the action to perform " 
 					+ "\n1. View record history"
 					+ "\n2. View account balance"
 					+ "\n3. Logout");

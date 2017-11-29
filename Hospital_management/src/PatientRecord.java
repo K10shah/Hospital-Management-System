@@ -2,10 +2,43 @@ import java.io.*;
 import java.time.LocalTime;
 public class PatientRecord {
 
-	LocalTime timestamp = null;
-	String diagnosis = "";
-	String prescription = "";
-	String doctorName = "";
+	private LocalTime timestamp = null;
+	private String diagnosis = "";
+	private String prescription = "";
+	private String doctorName = "";
+	
+	//getter and setter for diagnosis
+	public String getDiagnosis()
+	{
+		return this.diagnosis;
+	}
+	public void setDiagnosis(String diag)
+	{
+		this.diagnosis = diag;
+	}
+	
+	//getter and setter for prescription
+	public String getPrescription()
+	{
+		return this.prescription;
+	}
+	public void setPrescription(String pres)
+	{
+		this.prescription = pres;
+	}
+	
+	
+	//getter for doctorname
+	public String getDoctorName()
+	{
+		return this.doctorName;
+	}
+	
+	//getter for timestamp
+	public LocalTime getTimeStamp()
+	{
+		return this.timestamp;
+	}
 	
 	PatientRecord(LocalTime timestamp, String diag, String pres, String doctorName)
 	{
