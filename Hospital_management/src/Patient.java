@@ -29,20 +29,20 @@ public class Patient {
 	{
 		this.username = username;
 	}
-	
+
 	//getter and setter for account
 	public double getAccountBalance()
 	{
 		return this.accountbalance;
 	}
-	
+
 	public void setAccountBalance(double newBalance)
 	{
 		this.accountbalance = newBalance;
 	}
 
 
-	
+
 	//getter for the PatientRecord
 	public ArrayList<PatientRecord> getPatientRecord()
 	{
@@ -59,8 +59,8 @@ public class Patient {
 	{
 		this.patientRecord.add(pr);
 	}
-	
-	
+
+
 	//Function to view all the records of the patient
 	//@Requires("patientRecord != null")
 	//@Ensures(records!=null)

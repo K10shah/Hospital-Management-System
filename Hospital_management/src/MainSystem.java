@@ -27,14 +27,14 @@ public class MainSystem {
 
 
 		users.put("admin", "admin");
-		
+
 		while(true)
 		{
 			System.out.println("------------------------\nEnter username to login");
 			username = scanf.nextLine();
 			System.out.println("Enter the password");
 			pwd = scanf.nextLine();
-			
+
 			//Verifying if the credentials are proper or not
 			if(loginInfo.loginVerify(username, pwd))
 			{
@@ -60,9 +60,6 @@ public class MainSystem {
 	}
 
 	//Options for the receptionist	
-	//@Requires("receps!= null" && "loginInfo!=null")
-	//@Ensures("new(receps.size()) = old(receps.size()) + 1" && "new(loginInfo.logindata.size()) == old(loginInfo.loginData.size()) +1" 
-	//			&& "receps.containsKey(username)" && "users.containsKey(username)")
 	public static void ShowReceptionistOptions()
 	{
 		Scanner scanf = new Scanner(System.in);
@@ -100,10 +97,8 @@ public class MainSystem {
 		}
 	}
 
-	
+
 	//Options for the doctor
-	//@Requires("doctors!= null" && "loginInfo!=null")
-	//@Ensures("doctors.size.new = doctors.size.old + 1" && "loginInfo.logindata.size.new == loginInfo.loginData.size.old +1")
 	public static void ShowDoctorOptions(String username)
 	{
 		Scanner scanf = new Scanner(System.in);
@@ -375,16 +370,19 @@ public class MainSystem {
 
 			//updating the all users list
 			users.put(username, "admin");
-			
+
 		}
 		catch(Exception e)
 		{
 			System.out.println("Some error occured");
 		}
 	}
-	
-	
+
+
 	//Displaying adding receptionist menu
+	//@Requires("receps!= null" && "loginInfo!=null")
+	//@Ensures("new(receps.size()) = old(receps.size()) + 1" && "new(loginInfo.logindata.size()) == old(loginInfo.loginData.size()) +1" 
+	//			&& "receps.containsKey(username)" && "users.containsKey(username)")
 	public static void ShowAddRecepMenu()
 	{
 		Scanner scanf = new Scanner(System.in);
@@ -435,6 +433,8 @@ public class MainSystem {
 		}
 	}
 	//Displaying Adding doctor menu 
+	//@Requires("doctors!= null" && "loginInfo!=null")
+	//@Ensures("new(doctors.size()) = old(doctors.size()) + 1" && "new(loginInfo.logindata.size()) == old(loginInfo.loginData.size()) +1")
 	public static void ShowAddDoctorMenu()
 	{
 		Scanner scanf = new Scanner(System.in);
@@ -487,6 +487,9 @@ public class MainSystem {
 	}
 
 	//Displaying Add patient menu
+	//Displaying Adding doctor menu 
+	//@Requires("patients!= null" && "loginInfo!=null")
+	//@Ensures("new(patients.size()) = old(patients.size()) + 1" && "new(loginInfo.logindata.size()) == old(loginInfo.loginData.size()) +1")
 	public static void ShowAddPatientMenu()
 	{
 		Scanner scanf = new Scanner(System.in);
@@ -541,6 +544,7 @@ public class MainSystem {
 	//---------------------------------------------------------------------------------------------------
 
 	//Displaying delete user options for the admin
+	//Requires("users!=null")
 	public static void ShowDeleteUserOptions()
 	{
 		Scanner scanf = new Scanner(System.in);

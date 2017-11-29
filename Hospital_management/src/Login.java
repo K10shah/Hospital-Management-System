@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class Login {
-	
+
 	private Hashtable<String, String> loginData = new Hashtable<String, String>();
-	
+
 	//getter for loginData
 	public Hashtable<String, String> getLoginData()
 	{
@@ -16,14 +16,14 @@ public class Login {
 		loginData.put("admin", "admin");
 	}
 
-	
+
 	//Function for adding new user
 	public void addNewUser(String username, String pwd)
 	{
 		loginData.put(username, pwd);
 	}
-	
-	
+
+
 	//To verify is the user exists and the to validate the password if user exists
 	//@Requires("!username.isNullOrEmpty()" && "!pwd.isNullOrEmpty()" && "loginData!=null")s
 	public Boolean loginVerify(String username, String pwd)
