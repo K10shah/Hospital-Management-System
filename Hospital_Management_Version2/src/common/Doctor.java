@@ -6,7 +6,7 @@ import java.time.LocalTime;
 
 public class Doctor extends Employee{
 
-	Doctor(String name, String username)
+	Doctor(String username, String name)
 	{
 		this.setName(name);
 		this.setUserName(username);

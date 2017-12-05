@@ -8,6 +8,13 @@ public class Patient {
 	private double accountbalance = 0;
 	private ArrayList<PatientRecord> patientRecord = new ArrayList<PatientRecord>();
 
+	
+	Patient(String username, String name)
+	{
+		this.name = name;
+		this.username = username;
+	}
+	
 	//getter and setter for name
 	public String getName()
 	{
@@ -49,11 +56,7 @@ public class Patient {
 	{
 		return this.patientRecord;
 	}
-	Patient(String name, String username)
-	{
-		this.name = name;
-		this.username = username;
-	}
+	
 
 	//@Requires("pr!=null")
 	public void AddRecord(PatientRecord pr)
