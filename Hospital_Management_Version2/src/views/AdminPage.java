@@ -14,6 +14,7 @@ import common.*;
 public class AdminPage extends JFrame {
 
 	private JPanel contentPane;
+	private JButton btnLogout;
 	private Login loginInfo;
 
 	/**
@@ -26,14 +27,25 @@ public class AdminPage extends JFrame {
 	 */
 	public AdminPage(Login lg) {
 		loginInfo = lg;
+		initComponents();
+		createEvents();
+	}
+	
+	private void initComponents()
+	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 504, 405);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton btnLogout = new JButton("Logout");
+		btnLogout = new JButton("Logout");
+		btnLogout.setBounds(389, 332, 89, 23);
+		contentPane.add(btnLogout);
+	}
+	
+	private void createEvents()
+	{
 		btnLogout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -43,8 +55,6 @@ public class AdminPage extends JFrame {
 			}
 			
 		});
-		btnLogout.setBounds(389, 332, 89, 23);
-		contentPane.add(btnLogout);
 	}
 
 }
