@@ -48,12 +48,12 @@ public class Login {
 
 	//To verify is the user exists and the to validate the password if user exists
 	//@Requires("!username.isNullOrEmpty()" && "!pwd.isNullOrEmpty()" && "loginData!=null")s
-	public Boolean loginVerify(String username, String pwd)
+	public Boolean loginVerify(String username, char[] pwd)
 	{
 		if(loginData.containsKey(username))
 		{
-			String check = loginData.get(username).toString();
-			if(check.equals(pwd))
+			char[] check = loginData.get(username).toCharArray();
+			if(Arrays.equals(check,pwd))
 			{
 				return true;
 			}

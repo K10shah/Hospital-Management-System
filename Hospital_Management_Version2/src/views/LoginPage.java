@@ -29,6 +29,7 @@ public class LoginPage extends JFrame {
 	private JLabel lblUsrName;
 	private JLabel lblPwd;
 	private Login loginInfo;
+	private JLabel lblWarning;
 	/**
 	 * Launch the application.
 	 */
@@ -55,6 +56,7 @@ public class LoginPage extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setTitle("Welcome to AK hospital");
 
 		txtUserName = new JTextField();
 		txtUserName.setBounds(143, 59, 228, 26);
@@ -85,21 +87,50 @@ public class LoginPage extends JFrame {
 		btnLogin.setForeground(Color.WHITE);
 		btnLogin.setBounds(143, 170, 93, 34);
 		contentPane.add(btnLogin);
+		
+		lblWarning = new JLabel("Please insert valid username and password");
+		lblWarning.setVisible(false);
+		lblWarning.setBackground(Color.LIGHT_GRAY);
+		lblWarning.setForeground(Color.RED);
+		lblWarning.setBounds(10, 21, 361, 27);
+		contentPane.add(lblWarning);
 	}
 
 	private void createEvents()
 	{
+		
+		//Event handler when some one presses the Login button
 		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 
 				String username = txtUserName.getText();
-				String password = txtPassword.getText();
+				char[] password = txtPassword.getPassword();
 
 				if(loginInfo.loginVerify(username, password))
 				{
-					//moving on to the admin page.
-					ShowAdminPage();
+					String role = loginInfo.getRole(username);
+					
+					if(role.equals("admin"))
+					{
+						ShowAdminPage();
+					}
+					else if(role.equals("doctor"))
+					{
+						ShowDoctorPage();
+					}
+					else if(role.equals("patient"))
+					{
+						ShowPatientPage();
+					}
+					else if(role.equals("recep"))
+					{
+						ShowReceptionistPage();
+					}
+				}
+				else
+				{
+					lblWarning.setVisible(true);
 				}
 			}
 		});
@@ -111,4 +142,25 @@ public class LoginPage extends JFrame {
 		admin.setVisible(true);
 		dispose();
 	}
+	
+	private void ShowDoctorPage()
+	{
+		DoctorPage doctorframe = new DoctorPage(loginInfo);
+		doctorframe.setVisible(true);
+		dispose();
+	}
+	private void ShowPatientPage()
+	{
+		PatientPage patientframe = new PatientPage(loginInfo);
+		patientframe.setVisible(true);
+		dispose();
+	}
+	private void ShowReceptionistPage()
+	{
+		ReceptionistPage recepframe = new ReceptionistPage(loginInfo);
+		recepframe.setVisible(true);
+		dispose();
+	}
+	
+	
 }
