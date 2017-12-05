@@ -231,6 +231,8 @@ public class AdminPage extends JFrame
 			public void actionPerformed(ActionEvent e) {
 				pnlAddUser.setVisible(false);
 				pnlDltUsr.setVisible(true);
+				String username = txtSearch.getText();
+				loginInfo.deleteUser(username);
 			}
 		});
 
@@ -240,7 +242,8 @@ public class AdminPage extends JFrame
 				String username = txtSearch.getText();
 				if(username.equals("admin"))
 				{
-
+					lblFound.setText("Cannot delete default admin");
+					lblFound.setForeground(Color.BLACK);
 				}
 				else 
 				{
