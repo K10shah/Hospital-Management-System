@@ -426,6 +426,8 @@ public class MainSystem {
 
 			//adding the user to doctors list
 			receps.put(username, r);
+			
+			System.out.println(receps.get(username).getClass().getName());
 		}
 		catch(Exception e)
 		{
