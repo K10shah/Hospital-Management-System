@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import java.awt.Font;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class AdminPage extends JFrame 
 {
@@ -64,52 +66,6 @@ public class AdminPage extends JFrame
 
 		pnlDltUsr = new JPanel();
 		pnlDltUsr.setVisible(false);
-		pnlDltUsr.setBounds(160, 11, 318, 310);
-		contentPane.add(pnlDltUsr);
-		pnlDltUsr.setLayout(null);
-
-		txtSearch = new JTextField();
-		txtSearch.setText("");
-		txtSearch.setBounds(10, 11, 201, 20);
-		pnlDltUsr.add(txtSearch);
-		txtSearch.setColumns(10);
-
-		lblSearch = new JLabel("Enter username to delete");
-		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblSearch.setBounds(10, 42, 201, 20);
-		pnlDltUsr.add(lblSearch);
-
-		btnSearch = new JButton("Search");
-		btnSearch.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnSearch.setBounds(221, 10, 89, 23);
-		pnlDltUsr.add(btnSearch);
-
-		lblFound = new JLabel("");
-		lblFound.setBounds(10, 75, 269, 38);
-		pnlDltUsr.add(lblFound);
-
-		btnDelete = new JButton("Delete");
-		btnDelete.setVisible(false);
-		btnDelete.setBounds(10, 140, 89, 23);
-		pnlDltUsr.add(btnDelete);
-
-		btnLogOut = new JButton("Log Out");
-
-		btnLogOut.setBounds(389, 332, 89, 23);
-		contentPane.add(btnLogOut);
-
-		JPanel pnlAdminCtrl = new JPanel();
-		pnlAdminCtrl.setBounds(10, 11, 140, 344);
-		contentPane.add(pnlAdminCtrl);
-		pnlAdminCtrl.setLayout(null);
-
-		btnAddUser = new JButton("Add User");
-		btnAddUser.setBounds(10, 97, 120, 38);
-		pnlAdminCtrl.add(btnAddUser);
-
-		btnDltUser = new JButton("Delete user");
-		btnDltUser.setBounds(10, 191, 120, 38);
-		pnlAdminCtrl.add(btnDltUser);
 
 		pnlAddUser = new JPanel();
 		pnlAddUser.setVisible(false);
@@ -163,11 +119,57 @@ public class AdminPage extends JFrame
 		btnVerifyAndAdd = new JButton("Add");
 		btnVerifyAndAdd.setBounds(229, 276, 89, 23);
 		pnlAddUser.add(btnVerifyAndAdd);
+		pnlDltUsr.setBounds(160, 11, 318, 310);
+		contentPane.add(pnlDltUsr);
+		pnlDltUsr.setLayout(null);
+
+		txtSearch = new JTextField();
+		txtSearch.setText("");
+		txtSearch.setBounds(10, 11, 201, 20);
+		pnlDltUsr.add(txtSearch);
+		txtSearch.setColumns(10);
+
+		lblSearch = new JLabel("Enter username to delete");
+		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblSearch.setBounds(10, 42, 201, 20);
+		pnlDltUsr.add(lblSearch);
+
+		btnSearch = new JButton("Search");
+		btnSearch.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnSearch.setBounds(221, 10, 89, 23);
+		pnlDltUsr.add(btnSearch);
+
+		lblFound = new JLabel("");
+		lblFound.setBounds(10, 75, 269, 38);
+		pnlDltUsr.add(lblFound);
+
+		btnDelete = new JButton("Delete");
+		btnDelete.setVisible(false);
+		btnDelete.setBounds(10, 140, 89, 23);
+		pnlDltUsr.add(btnDelete);
+
+		btnLogOut = new JButton("Log Out");
+
+		btnLogOut.setBounds(389, 332, 89, 23);
+		contentPane.add(btnLogOut);
+
+		JPanel pnlAdminCtrl = new JPanel();
+		pnlAdminCtrl.setBounds(10, 11, 140, 344);
+		contentPane.add(pnlAdminCtrl);
+		pnlAdminCtrl.setLayout(null);
+
+		btnAddUser = new JButton("Add User");
+		btnAddUser.setBounds(10, 97, 120, 38);
+		pnlAdminCtrl.add(btnAddUser);
+
+		btnDltUser = new JButton("Delete user");
+		btnDltUser.setBounds(10, 191, 120, 38);
+		pnlAdminCtrl.add(btnDltUser);
 	}
 
 	private void createEvents()
 	{
-		//When Login is pressed
+		//When Logout is pressed
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LoginPage loginframe = new LoginPage(loginInfo);
@@ -226,13 +228,21 @@ public class AdminPage extends JFrame
 		});
 
 
-		//When the delete button is clicked
+		//When the delete user button is clicked
 		btnDltUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pnlAddUser.setVisible(false);
 				pnlDltUsr.setVisible(true);
+			}
+		});
+
+		//When the delete button is pressed after searching the username
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				String username = txtSearch.getText();
 				loginInfo.deleteUser(username);
+				lblFound.setText("User delete succesfully");
+				btnDelete.setVisible(false);
 			}
 		});
 
@@ -260,6 +270,44 @@ public class AdminPage extends JFrame
 						lblFound.setText("User name not found \nPlease type another username");
 						lblFound.setForeground(Color.RED);
 					}
+				}
+			}
+		});
+		
+		//When doctor radio button selected
+		rdbtnDoctor.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				if(rdbtnDoctor.isSelected())
+				{
+					rdbtnRecep.setSelected(false);
+					rdbtnAdmin.setSelected(false);
+					
+				}
+			}
+		});
+		
+		//when admin radio button is selected
+		rdbtnAdmin.addItemListener(new ItemListener() 
+		{
+			public void itemStateChanged(ItemEvent e) 
+			{
+				if(rdbtnAdmin.isSelected())
+				{
+					rdbtnRecep.setSelected(false);
+					rdbtnDoctor.setSelected(false);
+					
+				}
+			}
+		});
+		
+		rdbtnRecep.addItemListener(new ItemListener() 
+		{
+			public void itemStateChanged(ItemEvent e) 
+			{
+				if(rdbtnRecep.isSelected())
+				{
+					rdbtnDoctor.setSelected(false);
+					rdbtnAdmin.setSelected(false);
 				}
 			}
 		});

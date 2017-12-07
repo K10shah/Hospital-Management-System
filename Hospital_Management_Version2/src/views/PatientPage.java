@@ -15,13 +15,14 @@ public class PatientPage extends JFrame {
 
 	private JPanel contentPane;
 	private Login loginInfo;
-	
+	private String patName = "";
 	
 	/**
 	 * Create the frame.
 	 */
-	public PatientPage(Login lg) {
+	public PatientPage(Login lg, String username) {
 		loginInfo = lg;
+		patName = loginInfo.getPatients().get(username).getName();
 		initComponents();
 		createEvents();
 	}

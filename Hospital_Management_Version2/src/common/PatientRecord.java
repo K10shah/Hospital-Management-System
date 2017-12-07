@@ -8,6 +8,15 @@ public class PatientRecord {
 	private String prescription = "";
 	private String doctorName = "";
 	
+	//Constructor
+	public PatientRecord(LocalTime timestamp, String diag, String pres, String doctorName)
+	{
+		this.timestamp = timestamp;
+		this.diagnosis = diag;
+		this.prescription = pres;
+		this.doctorName = doctorName;
+	}
+	
 	//getter and setter for diagnosis
 	public String getDiagnosis()
 	{
@@ -41,13 +50,7 @@ public class PatientRecord {
 		return this.timestamp;
 	}
 	
-	PatientRecord(LocalTime timestamp, String diag, String pres, String doctorName)
-	{
-		this.timestamp = timestamp;
-		this.diagnosis = diag;
-		this.prescription = pres;
-		this.doctorName = doctorName;
-	}
+	
 	
 	public String toString()
 	{

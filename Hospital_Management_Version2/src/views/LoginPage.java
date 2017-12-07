@@ -145,19 +145,19 @@ public class LoginPage extends JFrame {
 	
 	private void ShowDoctorPage()
 	{
-		DoctorPage doctorframe = new DoctorPage(loginInfo);
+		DoctorPage doctorframe = new DoctorPage(loginInfo, txtUserName.getText());
 		doctorframe.setVisible(true);
 		dispose();
 	}
 	private void ShowPatientPage()
 	{
-		PatientPage patientframe = new PatientPage(loginInfo);
+		PatientPage patientframe = new PatientPage(loginInfo, txtUserName.getText());
 		patientframe.setVisible(true);
 		dispose();
 	}
 	private void ShowReceptionistPage()
 	{
-		ReceptionistPage recepframe = new ReceptionistPage(loginInfo);
+		ReceptionistPage recepframe = new ReceptionistPage(loginInfo, txtUserName.getText());
 		recepframe.setVisible(true);
 		dispose();
 	}
