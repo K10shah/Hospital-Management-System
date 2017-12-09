@@ -47,11 +47,8 @@ public class AdminPage extends JFrame
 	private JButton btnSearch;
 	private JLabel lblFound;
 	private JButton btnDelete;
-	private JRadioButton rdbtnCash;
-	private JRadioButton rdbtnNurse;
-	private JButton viewIn;
+	
 
-	private Inventory itemList = new Inventory();
 	public AdminPage(Login lg) 
 	{
 		loginInfo = lg;
@@ -109,11 +106,11 @@ public class AdminPage extends JFrame
 		pnlAddUser.add(rdbtnDoctor);
 
 		rdbtnAdmin = new JRadioButton("admin");
-		rdbtnAdmin.setBounds(95, 209, 78, 23);
+		rdbtnAdmin.setBounds(119, 209, 78, 23);
 		pnlAddUser.add(rdbtnAdmin);
 
 		rdbtnRecep = new JRadioButton("receptionist");
-		rdbtnRecep.setBounds(179, 209, 109, 23);
+		rdbtnRecep.setBounds(199, 209, 109, 23);
 		pnlAddUser.add(rdbtnRecep);
 
 		lblWarningDisp = new JLabel("");
@@ -123,16 +120,6 @@ public class AdminPage extends JFrame
 		btnVerifyAndAdd = new JButton("Add");
 		btnVerifyAndAdd.setBounds(229, 276, 89, 23);
 		pnlAddUser.add(btnVerifyAndAdd);
-		
-		rdbtnCash = new JRadioButton("cashier");
-		
-		rdbtnCash.setBounds(20, 248, 89, 23);
-		pnlAddUser.add(rdbtnCash);
-		
-		rdbtnNurse = new JRadioButton("nurse");
-
-		rdbtnNurse.setBounds(122, 248, 78, 23);
-		pnlAddUser.add(rdbtnNurse);
 		pnlDltUsr.setBounds(160, 11, 318, 310);
 		contentPane.add(pnlDltUsr);
 		pnlDltUsr.setLayout(null);
@@ -173,17 +160,12 @@ public class AdminPage extends JFrame
 		pnlAdminCtrl.setLayout(null);
 
 		btnAddUser = new JButton("Add User");
-		btnAddUser.setBounds(10, 13, 120, 38);
+		btnAddUser.setBounds(10, 97, 120, 38);
 		pnlAdminCtrl.add(btnAddUser);
 
 		btnDltUser = new JButton("Delete user");
-		btnDltUser.setBounds(10, 64, 120, 38);
+		btnDltUser.setBounds(10, 191, 120, 38);
 		pnlAdminCtrl.add(btnDltUser);
-		
-		viewIn = new JButton("View Inventory");
-		
-		viewIn.setBounds(12, 115, 118, 38);
-		pnlAdminCtrl.add(viewIn);
 	}
 
 	private void createEvents()
@@ -226,14 +208,6 @@ public class AdminPage extends JFrame
 					else if(rdbtnRecep.isSelected())
 					{
 						role = "recep";
-					}
-					else if(rdbtnCash.isSelected())
-					{
-						role = "cash";
-					}
-					else if(rdbtnNurse.isSelected())
-					{
-						role = "nurse";
 					}
 
 					if(!role.isEmpty())
@@ -308,8 +282,6 @@ public class AdminPage extends JFrame
 				{
 					rdbtnRecep.setSelected(false);
 					rdbtnAdmin.setSelected(false);
-					rdbtnCash.setSelected(false);
-					rdbtnNurse.setSelected(false);
 					
 				}
 			}
@@ -324,15 +296,11 @@ public class AdminPage extends JFrame
 				{
 					rdbtnRecep.setSelected(false);
 					rdbtnDoctor.setSelected(false);
-					rdbtnCash.setSelected(false);
-					rdbtnNurse.setSelected(false);
-					
 					
 				}
 			}
 		});
 		
-		//when receptionist radio button is selected
 		rdbtnRecep.addItemListener(new ItemListener() 
 		{
 			public void itemStateChanged(ItemEvent e) 
@@ -341,44 +309,7 @@ public class AdminPage extends JFrame
 				{
 					rdbtnDoctor.setSelected(false);
 					rdbtnAdmin.setSelected(false);
-					rdbtnCash.setSelected(false);
-					rdbtnNurse.setSelected(false);
 				}
-			}
-		});
-		
-		//radio button for cashier is selected
-		rdbtnCash.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent arg0) {
-				if(rdbtnCash.isSelected())
-				{
-					rdbtnDoctor.setSelected(false);
-					rdbtnAdmin.setSelected(false);
-					rdbtnRecep.setSelected(false);
-					rdbtnNurse.setSelected(false);
-				}
-			}
-		});
-		
-		//radio button for nurse is selected
-		rdbtnNurse.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent arg0) {
-				if(rdbtnNurse.isSelected())
-				{
-					rdbtnDoctor.setSelected(false);
-					rdbtnAdmin.setSelected(false);
-					rdbtnRecep.setSelected(false);
-					rdbtnCash.setSelected(false);
-				}
-			}
-			
-		});
-		
-		//View inventory button
-		viewIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				InventoryPage inv = new InventoryPage(itemList);
-				inv.setVisible(true);
 			}
 		});
 	}

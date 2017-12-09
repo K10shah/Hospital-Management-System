@@ -19,6 +19,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class LoginPage extends JFrame {
 
@@ -33,7 +35,10 @@ public class LoginPage extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	
+	public static void main(String[] args) {
+		
+	}
+
 	/**
 	 * Create the frame.
 	 */
@@ -124,14 +129,6 @@ public class LoginPage extends JFrame {
 					{
 						ShowReceptionistPage();
 					}
-					else if(role.equals("nurse"))
-					{
-						ShowNursePage();
-					}
-					else if(role.equals("cash"))
-					{
-						ShowCashierPage();
-					}
 				}
 				else
 				{
@@ -166,17 +163,6 @@ public class LoginPage extends JFrame {
 		recepframe.setVisible(true);
 		dispose();
 	}
-	private void ShowNursePage()
-	{
-		NursePage nurseframe = new NursePage(new Room());
-		nurseframe.setVisible(true);
-		dispose();
-	}
-	private void ShowCashierPage()
-	{
-		CashierPage cashierframe = new CashierPage();
-		cashierframe.setVisible(true);
-		dispose();
-	}
+	
 	
 }

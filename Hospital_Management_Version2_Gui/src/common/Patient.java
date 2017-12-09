@@ -6,7 +6,7 @@ public class Patient {
 	private String name = "";
 	private String username = "";
 	private double accountbalance = 0;
-	public ArrayList<PatientRecord> patientRecord = new ArrayList<PatientRecord>();
+	private ArrayList<PatientRecord> patientRecord = new ArrayList<PatientRecord>();
 
 	
 	Patient(String username, String name)
@@ -15,10 +15,6 @@ public class Patient {
 		this.username = username;
 	}
 	
-	public Patient() {
-		
-	}
-
 	//getter and setter for name
 	public String getName()
 	{
@@ -48,16 +44,12 @@ public class Patient {
 		return this.accountbalance;
 	}
 
-	
 	public void setAccountBalance(double newBalance)
 	{
 		this.accountbalance = this.accountbalance + newBalance;
 	}
 
-	public void payAccountBalance(double newBalance)
-	{
-		this.accountbalance = this.accountbalance - newBalance;
-	}
+
 
 	//getter for the PatientRecord
 	public ArrayList<PatientRecord> getPatientRecord()
@@ -92,7 +84,6 @@ public class Patient {
 		{
 			return records;
 		}
-		
 		
 	}
 

@@ -18,11 +18,6 @@ public class Login {
 	//list of receptionists
 	private static Hashtable<String, Receptionist> receps= new Hashtable<String, Receptionist>();
 
-	//list of cashier
-	private static Hashtable<String, Cashier> cashier= new Hashtable<String, Cashier>();
-
-	//list of nurse
-	private static Hashtable<String, Nurse> nurse= new Hashtable<String, Nurse>();
 
 	//getter for loginData
 	public Hashtable<String, String> getLoginData()
@@ -49,18 +44,6 @@ public class Login {
 	{
 		return this.receps;
 	}
-	
-	
-	public Hashtable<String, Cashier> getCashier()
-	{
-		return this.cashier;
-	}
-	
-	public Hashtable<String, Nurse> getNurse()
-	{
-		return this.nurse;
-	}
-	
 	public String getRole(String username)
 	{
 		return users.get(username);
@@ -70,28 +53,8 @@ public class Login {
 	{
 		//Default admin user so that atleast the admin can login
 		//This is only for the demo purpose
-		loginData.put("admin123", "password");
-		users.put("admin123","admin");
-		
-		//some default data entry for verification
-		loginData.put("patient123", "password");
-		loginData.put("doctor123", "password");
-		loginData.put("nurse123", "password");
-		loginData.put("cashier123", "password");
-		loginData.put("recep123", "password");
-		
-		users.put("patient123", "patient");
-		users.put("doctor123", "doctor");
-		users.put("nurse123", "nurse");
-		users.put("cashier123", "cash");
-		users.put("recep123", "recep");
-		
-		patients.put("patient123", new Patient("patient123", "pat"));
-		doctors.put("doctor123", new Doctor("doctor123", "doc"));
-		nurse.put("nurse123", new Nurse("nurse123", "nur"));
-		cashier.put("cashier123", new Cashier("cashier123", "cas"));
-		receps.put("recep123", new Receptionist("recep123", "rec"));
-		
+		loginData.put("admin", "admin");
+		users.put("admin","admin");
 	}
 
 
@@ -111,14 +74,6 @@ public class Login {
 		else if(role.equals("patient"))
 		{
 			patients.put(username, new Patient(username, name));
-		}
-		else if(role.equals("cash"))
-		{
-			cashier.put(username, new Cashier(username, name));
-		}
-		else if(role.equals("nurse"))
-		{
-			nurse.put(username, new Nurse(username, name));
 		}
 	}
 
@@ -140,14 +95,6 @@ public class Login {
 		else if(role.equals("recep"))
 		{
 			receps.remove(username);
-		}
-		else if(role.equals("nurse"))
-		{
-			nurse.remove(username);
-		}
-		else if(role.equals("cashier"))
-		{
-			cashier.remove(username);
 		}
 	}
 

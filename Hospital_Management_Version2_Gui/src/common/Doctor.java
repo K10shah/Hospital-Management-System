@@ -15,7 +15,7 @@ public class Doctor extends Employee{
 
 	//This method will prompt the doctor to enter the diagnosis and prescription for the patient he selected
 	//@Require ("p!= null")
-	//@Ensures ("new(p.patientRecord.size()) = ol(p.patientRecord.size()) + 1" and "pr.getDoctorName() == this.getName()")
+	//@Ensures ("p.patientRecord.size.new = p.patientRecord.size.old + 1" and "pr.getDoctorName() == this.getName()")
 	public void TreatPatient(Patient p)
 	{
 
