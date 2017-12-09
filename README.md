@@ -10,3 +10,6 @@ In this project we are implementing a system to manage the workings of a Hospita
 <b>Version 1</b>
 This is the initial release of this project and it will only contain a command line interface for the user to interact with the system.
 Also many functionalities won't be implemented in this version.
+
+<b>Version 2</b>
+This version contains basic graphical UI for the user to use. This application is much more intuitive than te previous version.
